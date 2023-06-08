@@ -1,6 +1,6 @@
 # Web Service - Individuella Uppgift
 
-## Mission
+## Mission / Log
 
 https://hackmd.io/ssyA6fJpT4mBHQZiBnAPRA
 
