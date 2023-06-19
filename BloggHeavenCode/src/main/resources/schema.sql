@@ -10,7 +10,7 @@ CREATE TABLE user
     address VARCHAR(90) NOT NULL,
     email VARCHAR(90) NOT NULL,
     phone VARCHAR(90) NOT NULL,
-    memberTypes VARCHAR(90) NOT NULL
+    memberTypes ENUM('standard','enhanced','premium') NOT NULL
 );
 
 CREATE TABLE address
