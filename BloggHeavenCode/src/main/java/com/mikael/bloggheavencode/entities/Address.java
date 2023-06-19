@@ -2,6 +2,14 @@ package com.mikael.bloggheavencode.entities;
 
 import javax.persistence.*;
 
+/**
+ * <code>Address</code> - Address class with information about the User
+ *
+ * @author Mikael Eriksson (mikael.eriksson@edu.edugrade.se)
+ * @version 0.0.1
+ */
+
+
 @Entity
 public class Address {
 
