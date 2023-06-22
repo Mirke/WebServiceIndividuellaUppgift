@@ -25,10 +25,13 @@ public class User {
 
     private String firstName;
     private String lastName;
-    private String address;
     private String email;
     private String phone;
     private MemberTypes memberTypes;
+
+    @OneToOne
+    @JoinColumn(name = "AddressId")
+    private Address address;
 
     // -----------------------------------------------------------------------------------------------------------------
     //   Constructor
@@ -37,7 +40,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String firstName, String lastName, String address, String email, String phone, MemberTypes memberTypes) {
+    public User(Long id, String firstName, String lastName, Address address, String email, String phone, MemberTypes memberTypes) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -47,7 +50,7 @@ public class User {
         this.memberTypes = memberTypes;
     }
 
-    public User(String firstName, String lastName, String address, String email, String phone, MemberTypes memberTypes) {
+    public User(String firstName, String lastName, Address address, String email, String phone, MemberTypes memberTypes) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -80,11 +83,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
