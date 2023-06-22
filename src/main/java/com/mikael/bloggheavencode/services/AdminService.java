@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <code>AdminService</code> - Service that is a middle person between Admin and Repositories, business logic
@@ -20,9 +21,15 @@ public class AdminService implements IAdminService {
     @Autowired
     private BlogUserRepository blogUserRepository;
 
-
     @Override
     public List<Blog_User> getAllUsers() {
         return blogUserRepository.findAll();
     }
+
+    @Override
+    public Optional<Blog_User> findBlogUserById(Long id) {
+        return blogUserRepository.findById(id);
+    }
+
+
 }

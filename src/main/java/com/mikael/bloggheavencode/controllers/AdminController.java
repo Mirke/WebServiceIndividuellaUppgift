@@ -4,9 +4,12 @@ import com.mikael.bloggheavencode.entities.Blog_User;
 import com.mikael.bloggheavencode.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <code>AdminController</code> - Controller with admin mappings
@@ -24,5 +27,11 @@ public class AdminController {
     @GetMapping("/api/users")
     public List<Blog_User> getAllUsers(){
         return adminService.getAllUsers();
+    }
+
+    @GetMapping("/api/users/{id}")
+    @ResponseBody
+    public Optional<Blog_User> getUserByID(@PathVariable Long id){
+        return adminService.findBlogUserById(id);
     }
 }
