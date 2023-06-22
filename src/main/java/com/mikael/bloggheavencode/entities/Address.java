@@ -19,12 +19,19 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private Long id;
 
+    @JoinColumn(name = "street", nullable = false)
     private String street;
+
+    @JoinColumn(name = "postal_code", nullable = false)
     private String postalCode;
+
+    @JoinColumn(name = "city", nullable = false)
     private String city;
+
+    @JoinColumn(name = "country", nullable = false)
     private String country;
 
 
@@ -51,9 +58,13 @@ public class Address {
         this.country = country;
     }
 
+
+
     // -----------------------------------------------------------------------------------------------------------------
     //   Getter & Setter
     // -----------------------------------------------------------------------------------------------------------------
+
+
 
     public Long getId() {
         return id;

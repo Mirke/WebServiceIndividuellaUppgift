@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 
 @Entity
-public class BlogPost {
+public class Blog_Post {
 
     // -----------------------------------------------------------------------------------------------------------------
     //   Properties
@@ -18,30 +18,43 @@ public class BlogPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private Long id;
 
+    @JoinColumn(name = "content", nullable = false)
     private String content;
 
-    @OneToOne
-    @JoinColumn(name = "UserId")
-    private User user;
+    @ManyToOne
+    @JoinColumn(name = "fk_blog_user")
+    Blog_User blog_user;
+
+
+
 
     // -----------------------------------------------------------------------------------------------------------------
     //   Constructor
     // -----------------------------------------------------------------------------------------------------------------
 
-    public BlogPost() {
+    public Blog_Post() {
     }
 
-    public BlogPost(Long id, User user, String content) {
+    public Blog_Post(Long id, String content) {
         this.id = id;
-        this.user = user;
         this.content = content;
     }
 
-    public BlogPost(User user, String content) {
-        this.user = user;
+    public Blog_Post(Long id, String content, Blog_User blog_user) {
+        this.id = id;
+        this.content = content;
+        this.blog_user = blog_user;
+    }
+
+    public Blog_Post(String content, Blog_User blog_user) {
+        this.content = content;
+        this.blog_user = blog_user;
+    }
+
+    public Blog_Post(String content) {
         this.content = content;
     }
 
@@ -57,19 +70,19 @@ public class BlogPost {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Blog_User getBlog_user() {
+        return blog_user;
+    }
+
+    public void setBlog_user(Blog_User blog_user) {
+        this.blog_user = blog_user;
     }
 }

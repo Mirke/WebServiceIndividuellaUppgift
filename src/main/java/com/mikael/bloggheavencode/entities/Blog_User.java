@@ -1,6 +1,6 @@
 package com.mikael.bloggheavencode.entities;
 
-import com.mikael.bloggheavencode.enums.MemberTypes;
+import com.mikael.bloggheavencode.enums.Member_Types;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ import javax.persistence.*;
  */
 
 @Entity
-public class User {
+public class Blog_User {
 
     // -----------------------------------------------------------------------------------------------------------------
     //   Properties
@@ -23,47 +23,81 @@ public class User {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
-    private MemberTypes memberTypes;
 
-    @OneToOne
-    @JoinColumn(name = "AddressId")
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "phone", nullable = false)
+    private String phone;
+
+    @Column(name = "member_types", nullable = false)
+    private String memberTypes;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_address")
     private Address address;
 
     // -----------------------------------------------------------------------------------------------------------------
     //   Constructor
     // -----------------------------------------------------------------------------------------------------------------
 
-    public User() {
+    public Blog_User() {
     }
 
-    public User(Long id, String firstName, String lastName, Address address, String email, String phone, MemberTypes memberTypes) {
+    public Blog_User(Long id, String firstName, String lastName, String email, String phone, String memberTypes) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
         this.email = email;
         this.phone = phone;
         this.memberTypes = memberTypes;
     }
 
-    public User(String firstName, String lastName, Address address, String email, String phone, MemberTypes memberTypes) {
+    public Blog_User(String firstName, String lastName, String email, String phone, String memberTypes) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
         this.email = email;
         this.phone = phone;
         this.memberTypes = memberTypes;
+    }
+
+    public Blog_User(Long id, String firstName, String lastName, String email, String phone, String memberTypes, Address address) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.memberTypes = memberTypes;
+        this.address = address;
+    }
+
+    public Blog_User(String firstName, String lastName, String email, String phone, String memberTypes, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.memberTypes = memberTypes;
+        this.address = address;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
     //   Getter & Setter
     // -----------------------------------------------------------------------------------------------------------------
 
-    public User(Long id) {
+    public Blog_User(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -83,14 +117,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -107,11 +133,19 @@ public class User {
         this.phone = phone;
     }
 
-    public MemberTypes getMemberTypes() {
+    public String getMemberTypes() {
         return memberTypes;
     }
 
-    public void setMemberTypes(MemberTypes memberTypes) {
+    public void setMemberTypes(String memberTypes) {
         this.memberTypes = memberTypes;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
