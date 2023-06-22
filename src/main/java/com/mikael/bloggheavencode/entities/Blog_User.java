@@ -1,7 +1,5 @@
 package com.mikael.bloggheavencode.entities;
 
-import com.mikael.bloggheavencode.enums.Member_Types;
-
 import javax.persistence.*;
 
 /**

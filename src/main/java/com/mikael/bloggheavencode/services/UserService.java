@@ -1,28 +1,21 @@
 package com.mikael.bloggheavencode.services;
 
-import com.mikael.bloggheavencode.entities.Blog_User;
 import com.mikael.bloggheavencode.repositories.BlogUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
- * <code>AdminService</code> - Service that is a middle person between Admin and Repositories, business logic
+ * <code>UserService</code> - Service that is a middle person between Users and Repositories, business logic
  *
  * @author Mikael Eriksson (mikael.eriksson@edu.edugrade.se)
  * @version 0.0.1
  */
 
 @Service
-public class AdminService implements IAdminService {
+public class UserService implements IUserService{
 
     @Autowired
     private BlogUserRepository blogUserRepository;
 
 
-    @Override
-    public List<Blog_User> getAllUsers() {
-        return blogUserRepository.findAll();
-    }
 }

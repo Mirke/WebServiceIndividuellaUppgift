@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * <code>AdminController</code> - Controller with admin mappings
+ *
+ * @author Mikael Eriksson (mikael.eriksson@edu.edugrade.se)
+ * @version 0.0.1
+ */
+
 @RestController
 public class AdminController {
 
