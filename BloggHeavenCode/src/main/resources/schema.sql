@@ -23,3 +23,11 @@ CREATE TABLE user
     memberTypes ENUM('standard','enhanced','premium') NOT NULL
 );
 
+CREATE TABLE blogpost
+(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    content VARCHAR(255) NOT NULL,
+    UserId INT,
+    FOREIGN KEY (UserId) REFERENCES user(id)
+
+);

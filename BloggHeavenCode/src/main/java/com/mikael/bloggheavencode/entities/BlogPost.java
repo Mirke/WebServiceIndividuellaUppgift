@@ -21,8 +21,11 @@ public class BlogPost {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String user;
     private String content;
+
+    @OneToOne
+    @JoinColumn(name = "UserId")
+    private User user;
 
     // -----------------------------------------------------------------------------------------------------------------
     //   Constructor
@@ -31,13 +34,13 @@ public class BlogPost {
     public BlogPost() {
     }
 
-    public BlogPost(Long id, String user, String content) {
+    public BlogPost(Long id, User user, String content) {
         this.id = id;
         this.user = user;
         this.content = content;
     }
 
-    public BlogPost(String user, String content) {
+    public BlogPost(User user, String content) {
         this.user = user;
         this.content = content;
     }
@@ -54,11 +57,11 @@ public class BlogPost {
         this.id = id;
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

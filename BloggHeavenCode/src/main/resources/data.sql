@@ -14,3 +14,9 @@ VALUES ('Peter', 'Andersson', 1,'peter@emailmail.com', '0777777777','standard'),
        ('Kim','Karlsson',4,'kim@emailmail.com','0787777777773','standard'),
        ('Morgan','Ekblad',5,'morgan@emailmail.com','07977777775','enhanced');
 
+INSERT INTO blogpost(content, UserId)
+VALUES ('Today was a good day!',1),
+       ('My dog sneezed',2),
+       ('It will rain tomorrow.',3),
+       ('I need more coffee.',4),
+       ('Is there aliens out there?',5)
