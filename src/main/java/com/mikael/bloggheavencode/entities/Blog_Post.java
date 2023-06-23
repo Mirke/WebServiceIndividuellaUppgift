@@ -82,4 +82,13 @@ public class Blog_Post {
     public void setBlog_user(Blog_User blog_user) {
         this.blog_user = blog_user;
     }
+
+    @Override
+    public String toString() {
+        return "Blog_Post{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", blog_user=" + blog_user +
+                '}';
+    }
 }

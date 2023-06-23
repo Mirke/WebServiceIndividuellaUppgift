@@ -146,4 +146,17 @@ public class Blog_User {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "Blog_User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", memberTypes='" + memberTypes + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }

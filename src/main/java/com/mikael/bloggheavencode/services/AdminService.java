@@ -31,5 +31,10 @@ public class AdminService implements IAdminService {
         return blogUserRepository.findById(id);
     }
 
+    @Override
+    public void createBlogUser(Blog_User blogUser) {
+            blogUserRepository.save(blogUser);
+    }
+
 
 }
