@@ -15,4 +15,6 @@ import java.util.Optional;
 public interface IAdminService {
     List<Blog_User> getAllUsers();
     Optional<Blog_User> findBlogUserById(Long id);
+
+    void createBlogUser(Blog_User blogUser);
 }

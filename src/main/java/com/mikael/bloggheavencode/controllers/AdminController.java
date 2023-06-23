@@ -3,10 +3,9 @@ package com.mikael.bloggheavencode.controllers;
 import com.mikael.bloggheavencode.entities.Blog_User;
 import com.mikael.bloggheavencode.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,8 +29,17 @@ public class AdminController {
     }
 
     @GetMapping("/api/users/{id}")
-    @ResponseBody
     public Optional<Blog_User> getUserByID(@PathVariable Long id){
         return adminService.findBlogUserById(id);
+    }
+
+    @PostMapping("/api/newuser")
+    public ResponseEntity<String> newUser(@RequestBody Blog_User blogUser){
+        try {
+            adminService.createBlogUser(blogUser);
+            return new ResponseEntity<>("Creating user " + blogUser, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Failed to add user ", HttpStatus.BAD_REQUEST);
+        }
     }
 }
