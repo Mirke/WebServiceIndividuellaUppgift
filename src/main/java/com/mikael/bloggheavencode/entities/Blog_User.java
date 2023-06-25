@@ -1,6 +1,7 @@
 package com.mikael.bloggheavencode.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 
 /**
  * <code>User</code> - User class that has the information of the user

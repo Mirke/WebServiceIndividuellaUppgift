@@ -1,7 +1,6 @@
 package com.mikael.bloggheavencode.services;
 
 import com.mikael.bloggheavencode.entities.Blog_Post;
-import com.mikael.bloggheavencode.entities.Blog_User;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

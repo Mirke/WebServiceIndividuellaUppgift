@@ -1,6 +1,7 @@
 package com.mikael.bloggheavencode.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 
 /**
  * <code>BlogPost</code> - Contains information posted on the site

@@ -1,6 +1,6 @@
 package com.mikael.bloggheavencode.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * <code>Address</code> - Address class with information about the User

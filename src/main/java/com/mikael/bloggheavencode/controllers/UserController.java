@@ -5,9 +5,10 @@ import com.mikael.bloggheavencode.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,16 +27,19 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/api/posts")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public List<Blog_Post> getAllUsers(){
         return userService.getAllBlogPosts();
     }
 
     @GetMapping("/api/posts/{id}")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public Optional<Blog_Post> getBlogPostByID(@PathVariable Long id){
         return userService.findBlogPostById(id);
     }
 
     @DeleteMapping("/api/deletepost/{id}")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<String> deleteBlogPostByID(@PathVariable Long id){
         try{
             userService.deleteBlogPostById(id);
@@ -47,11 +51,13 @@ public class UserController {
     }
 
     @PostMapping("/api/newpost")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<String> createNewPost(@RequestBody Blog_Post blogPost){
         return userService.createBlogPost(blogPost);
     }
 
     @PutMapping("/api/updatepost/{id}")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<String> updatePost(@PathVariable Long id, @RequestBody Blog_Post blogPost){
         return userService.updateBlogPost(id, blogPost.getContent());
     }
