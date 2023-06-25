@@ -1,5 +1,4 @@
 package com.mikael.bloggheavencode.services;
-
 import com.mikael.bloggheavencode.entities.Blog_Post;
 import com.mikael.bloggheavencode.repositories.BlogPostRepository;
 import com.mikael.bloggheavencode.repositories.BlogUserRepository;
@@ -20,11 +19,19 @@ import java.util.Optional;
 @Service
 public class UserService implements IUserService{
 
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Repository Property
+    // -----------------------------------------------------------------------------------------------------------------
+
     @Autowired
     private BlogUserRepository userRepository;
 
     @Autowired
     private BlogPostRepository postRepository;
+
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Service Methods
+    // -----------------------------------------------------------------------------------------------------------------
 
     @Override
     public List<Blog_Post> getAllBlogPosts() {

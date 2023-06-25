@@ -1,5 +1,4 @@
 package com.mikael.bloggheavencode.config;
-
 import com.mikael.bloggheavencode.jwt.JwtAuthConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +24,16 @@ import static org.springframework.security.config.http.SessionCreationPolicy.*;
 @EnableMethodSecurity
 public class SecurityConfig {
 
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Authentication Converter Property
+    // -----------------------------------------------------------------------------------------------------------------
+
     @Autowired
     private JwtAuthConverter jwtAuthConverter;
+
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Session and FilterChain
+    // -----------------------------------------------------------------------------------------------------------------
 
     @Bean
     protected SessionAuthenticationStrategy strategy() {

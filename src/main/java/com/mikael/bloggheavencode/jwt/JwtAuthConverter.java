@@ -25,10 +25,17 @@ import java.util.stream.Stream;
 @Component
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
-    private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Authority and Settings Properties
+    // -----------------------------------------------------------------------------------------------------------------
 
+    private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
     private String resourceId = "bloggheaven-api";
     private String principleAttribute = "preferred_username";
+
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Token, Name and Extraction of Roles
+    // -----------------------------------------------------------------------------------------------------------------
 
     @Override
     public AbstractAuthenticationToken convert(@NonNull Jwt jwt){
@@ -36,10 +43,6 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
                 jwtGrantedAuthoritiesConverter.convert(jwt).stream(),
                 extractResourceRoles(jwt).stream())
                 .collect(Collectors.toSet());
-        System.out.println(authorities);
-        System.out.println(jwt.getClaims());
-        System.out.println(getPrincipleClaimName(jwt));
-        System.out.println(extractResourceRoles(jwt));
         return new JwtAuthenticationToken(jwt, authorities, getPrincipleClaimName(jwt));
     }
 

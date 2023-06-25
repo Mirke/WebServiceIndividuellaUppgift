@@ -1,5 +1,4 @@
 package com.mikael.bloggheavencode.entities;
-
 import jakarta.persistence.*;
 
 /**

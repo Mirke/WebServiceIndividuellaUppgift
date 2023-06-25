@@ -1,5 +1,4 @@
 package com.mikael.bloggheavencode.controllers;
-
 import com.mikael.bloggheavencode.entities.Blog_Post;
 import com.mikael.bloggheavencode.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import jakarta.transaction.*;
 import java.util.List;
 import java.util.Optional;
@@ -23,8 +21,16 @@ import java.util.Optional;
 @Transactional
 public class UserController {
 
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Server Property
+    // -----------------------------------------------------------------------------------------------------------------
+
     @Autowired
     UserService userService;
+
+    // -----------------------------------------------------------------------------------------------------------------
+    //   CRUD Endpoints
+    // -----------------------------------------------------------------------------------------------------------------
 
     @GetMapping("/api/posts")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
