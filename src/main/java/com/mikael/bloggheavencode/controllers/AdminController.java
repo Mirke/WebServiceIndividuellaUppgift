@@ -1,5 +1,5 @@
 package com.mikael.bloggheavencode.controllers;
-import com.mikael.bloggheavencode.entities.Blog_User;
+import com.mikael.bloggheavencode.entities.BlogUser;
 import com.mikael.bloggheavencode.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,19 +33,19 @@ public class AdminController {
 
     @GetMapping("/users")
     @PreAuthorize("hasRole('ADMIN')")
-    public List<Blog_User> getAllUsers(){
+    public List<BlogUser> getAllUsers(){
         return adminService.getAllUsers();
     }
 
     @GetMapping("/users/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public Optional<Blog_User> getUserByID(@PathVariable Long id){
+    public Optional<BlogUser> getUserByID(@PathVariable Long id){
         return adminService.findBlogUserById(id);
     }
 
     @PostMapping("/newuser")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> newUser(@RequestBody Blog_User blogUser){
+    public ResponseEntity<String> newUser(@RequestBody BlogUser blogUser){
         try {
             adminService.createBlogUser(blogUser);
             return new ResponseEntity<>("Creating user " + blogUser, HttpStatus.OK);

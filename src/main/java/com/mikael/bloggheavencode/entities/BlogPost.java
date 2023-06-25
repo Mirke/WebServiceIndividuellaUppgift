@@ -10,7 +10,7 @@ import jakarta.persistence.*;
  */
 
 @Entity
-public class Blog_Post {
+public class BlogPost {
 
     // -----------------------------------------------------------------------------------------------------------------
     //   Properties
@@ -26,32 +26,32 @@ public class Blog_Post {
 
     @ManyToOne
     @JoinColumn(name = "fk_blog_user")
-    Blog_User blog_user;
+    BlogUser blog_user;
 
     // -----------------------------------------------------------------------------------------------------------------
     //   Constructor
     // -----------------------------------------------------------------------------------------------------------------
 
-    public Blog_Post() {
+    public BlogPost() {
     }
 
-    public Blog_Post(Long id, String content) {
+    public BlogPost(Long id, String content) {
         this.id = id;
         this.content = content;
     }
 
-    public Blog_Post(Long id, String content, Blog_User blog_user) {
+    public BlogPost(Long id, String content, BlogUser blog_user) {
         this.id = id;
         this.content = content;
         this.blog_user = blog_user;
     }
 
-    public Blog_Post(String content, Blog_User blog_user) {
+    public BlogPost(String content, BlogUser blog_user) {
         this.content = content;
         this.blog_user = blog_user;
     }
 
-    public Blog_Post(String content) {
+    public BlogPost(String content) {
         this.content = content;
     }
 
@@ -75,11 +75,11 @@ public class Blog_Post {
         this.content = content;
     }
 
-    public Blog_User getBlog_user() {
+    public BlogUser getBlog_user() {
         return blog_user;
     }
 
-    public void setBlog_user(Blog_User blog_user) {
+    public void setBlog_user(BlogUser blog_user) {
         this.blog_user = blog_user;
     }
 

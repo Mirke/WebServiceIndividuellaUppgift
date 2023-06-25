@@ -10,7 +10,7 @@ import jakarta.persistence.*;
  */
 
 @Entity
-public class Blog_User {
+public class BlogUser {
 
     // -----------------------------------------------------------------------------------------------------------------
     //   Properties
@@ -44,10 +44,10 @@ public class Blog_User {
     //   Constructor
     // -----------------------------------------------------------------------------------------------------------------
 
-    public Blog_User() {
+    public BlogUser() {
     }
 
-    public Blog_User(Long id, String firstName, String lastName, String email, String phone, String memberTypes) {
+    public BlogUser(Long id, String firstName, String lastName, String email, String phone, String memberTypes) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -56,7 +56,7 @@ public class Blog_User {
         this.memberTypes = memberTypes;
     }
 
-    public Blog_User(String firstName, String lastName, String email, String phone, String memberTypes) {
+    public BlogUser(String firstName, String lastName, String email, String phone, String memberTypes) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -64,7 +64,7 @@ public class Blog_User {
         this.memberTypes = memberTypes;
     }
 
-    public Blog_User(Long id, String firstName, String lastName, String email, String phone, String memberTypes, Address address) {
+    public BlogUser(Long id, String firstName, String lastName, String email, String phone, String memberTypes, Address address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -74,7 +74,7 @@ public class Blog_User {
         this.address = address;
     }
 
-    public Blog_User(String firstName, String lastName, String email, String phone, String memberTypes, Address address) {
+    public BlogUser(String firstName, String lastName, String email, String phone, String memberTypes, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -87,7 +87,7 @@ public class Blog_User {
     //   Getter & Setter
     // -----------------------------------------------------------------------------------------------------------------
 
-    public Blog_User(Long id) {
+    public BlogUser(Long id) {
         this.id = id;
     }
 

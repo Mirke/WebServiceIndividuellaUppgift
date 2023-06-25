@@ -1,5 +1,5 @@
 package com.mikael.bloggheavencode.services;
-import com.mikael.bloggheavencode.entities.Blog_User;
+import com.mikael.bloggheavencode.entities.BlogUser;
 import com.mikael.bloggheavencode.repositories.BlogUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,17 +28,17 @@ public class AdminService implements IAdminService {
     // -----------------------------------------------------------------------------------------------------------------
 
     @Override
-    public List<Blog_User> getAllUsers() {
+    public List<BlogUser> getAllUsers() {
         return blogUserRepository.findAll();
     }
 
     @Override
-    public Optional<Blog_User> findBlogUserById(Long id) {
+    public Optional<BlogUser> findBlogUserById(Long id) {
         return blogUserRepository.findById(id);
     }
 
     @Override
-    public void createBlogUser(Blog_User blogUser) {
+    public void createBlogUser(BlogUser blogUser) {
             blogUserRepository.save(blogUser);
     }
 

@@ -1,5 +1,5 @@
 package com.mikael.bloggheavencode.services;
-import com.mikael.bloggheavencode.entities.Blog_Post;
+import com.mikael.bloggheavencode.entities.BlogPost;
 import com.mikael.bloggheavencode.repositories.BlogPostRepository;
 import com.mikael.bloggheavencode.repositories.BlogUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,22 +34,22 @@ public class UserService implements IUserService{
     // -----------------------------------------------------------------------------------------------------------------
 
     @Override
-    public List<Blog_Post> getAllBlogPosts() {
+    public List<BlogPost> getAllBlogPosts() {
         return postRepository.findAll();
     }
 
     @Override
-    public Optional<Blog_Post> findBlogPostById(Long id) {
+    public Optional<BlogPost> findBlogPostById(Long id) {
         return postRepository.findById(id);
     }
 
     @Override
-    public Optional<Blog_Post> deleteBlogPostById(Long id) {
+    public Optional<BlogPost> deleteBlogPostById(Long id) {
         return postRepository.deleteBlog_PostById(id);
     }
 
     @Override
-    public ResponseEntity<String> createBlogPost(Blog_Post blogPost){
+    public ResponseEntity<String> createBlogPost(BlogPost blogPost){
         try {
             postRepository.save(blogPost);
             return new ResponseEntity<>("Created blog post", HttpStatus.OK);
@@ -62,7 +62,7 @@ public class UserService implements IUserService{
     public ResponseEntity<String> updateBlogPost(Long id, String content) {
         if(postRepository.existsById(id)){
             try{
-                Blog_Post blogPost = postRepository.getById(id);
+                BlogPost blogPost = postRepository.getById(id);
                 blogPost.setContent(content);
                 postRepository.save(blogPost);
                 return new ResponseEntity<>("Update new blog post!", HttpStatus.OK);

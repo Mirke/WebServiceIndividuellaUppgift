@@ -1,5 +1,5 @@
 package com.mikael.bloggheavencode.services;
-import com.mikael.bloggheavencode.entities.Blog_Post;
+import com.mikael.bloggheavencode.entities.BlogPost;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Optional;
@@ -12,9 +12,9 @@ import java.util.Optional;
  */
 
 public interface IUserService {
-    List<Blog_Post> getAllBlogPosts();
-    Optional<Blog_Post> findBlogPostById(Long id);
-    Optional<Blog_Post> deleteBlogPostById(Long id);
-    ResponseEntity<String> createBlogPost(Blog_Post blogPost);
+    List<BlogPost> getAllBlogPosts();
+    Optional<BlogPost> findBlogPostById(Long id);
+    Optional<BlogPost> deleteBlogPostById(Long id);
+    ResponseEntity<String> createBlogPost(BlogPost blogPost);
     ResponseEntity<String> updateBlogPost(Long id, String content);
 }

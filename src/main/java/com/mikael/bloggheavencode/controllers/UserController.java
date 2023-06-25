@@ -1,5 +1,5 @@
 package com.mikael.bloggheavencode.controllers;
-import com.mikael.bloggheavencode.entities.Blog_Post;
+import com.mikael.bloggheavencode.entities.BlogPost;
 import com.mikael.bloggheavencode.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,13 +34,13 @@ public class UserController {
 
     @GetMapping("/api/posts")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
-    public List<Blog_Post> getAllUsers(){
+    public List<BlogPost> getAllUsers(){
         return userService.getAllBlogPosts();
     }
 
     @GetMapping("/api/posts/{id}")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
-    public Optional<Blog_Post> getBlogPostByID(@PathVariable Long id){
+    public Optional<BlogPost> getBlogPostByID(@PathVariable Long id){
         return userService.findBlogPostById(id);
     }
 
@@ -58,13 +58,13 @@ public class UserController {
 
     @PostMapping("/api/newpost")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
-    public ResponseEntity<String> createNewPost(@RequestBody Blog_Post blogPost){
+    public ResponseEntity<String> createNewPost(@RequestBody BlogPost blogPost){
         return userService.createBlogPost(blogPost);
     }
 
     @PutMapping("/api/updatepost/{id}")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
-    public ResponseEntity<String> updatePost(@PathVariable Long id, @RequestBody Blog_Post blogPost){
+    public ResponseEntity<String> updatePost(@PathVariable Long id, @RequestBody BlogPost blogPost){
         return userService.updateBlogPost(id, blogPost.getContent());
     }
 

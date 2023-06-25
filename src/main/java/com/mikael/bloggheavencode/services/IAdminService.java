@@ -1,5 +1,5 @@
 package com.mikael.bloggheavencode.services;
-import com.mikael.bloggheavencode.entities.Blog_User;
+import com.mikael.bloggheavencode.entities.BlogUser;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
  */
 
 public interface IAdminService {
-    List<Blog_User> getAllUsers();
-    Optional<Blog_User> findBlogUserById(Long id);
-    void createBlogUser(Blog_User blogUser);
+    List<BlogUser> getAllUsers();
+    Optional<BlogUser> findBlogUserById(Long id);
+    void createBlogUser(BlogUser blogUser);
 }
