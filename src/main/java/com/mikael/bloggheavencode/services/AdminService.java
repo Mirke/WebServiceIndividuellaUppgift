@@ -2,6 +2,8 @@ package com.mikael.bloggheavencode.services;
 import com.mikael.bloggheavencode.entities.BlogUser;
 import com.mikael.bloggheavencode.repositories.BlogUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -38,9 +40,13 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public void createBlogUser(BlogUser blogUser) {
+    public ResponseEntity<String> createNewUser(BlogUser blogUser) {
+        try {
             blogUserRepository.save(blogUser);
+            return new ResponseEntity<>("Creating user: " + blogUser.getFirstName() + " " + blogUser.getLastName(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("FAILED to create user. ", HttpStatus.BAD_REQUEST);
+        }
     }
-
 
 }

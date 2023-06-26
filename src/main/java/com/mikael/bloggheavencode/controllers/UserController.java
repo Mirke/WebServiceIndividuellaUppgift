@@ -33,37 +33,31 @@ public class UserController {
     // -----------------------------------------------------------------------------------------------------------------
 
     @GetMapping("/api/posts")
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAnyRole('BLOGGHEAVEN_USER','BLOGGHEAVEN_ADMIN')")
     public List<BlogPost> getAllUsers(){
         return userService.getAllBlogPosts();
     }
 
     @GetMapping("/api/posts/{id}")
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAnyRole('BLOGGHEAVEN_USER','BLOGGHEAVEN_ADMIN')")
     public Optional<BlogPost> getBlogPostByID(@PathVariable Long id){
         return userService.findBlogPostById(id);
     }
 
     @DeleteMapping("/api/deletepost/{id}")
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAnyRole('BLOGGHEAVEN_USER','BLOGGHEAVEN_ADMIN')")
     public ResponseEntity<String> deleteBlogPostByID(@PathVariable Long id){
-        try{
-            userService.deleteBlogPostById(id);
-            return new ResponseEntity<>("Deleted blog post with id " + id, HttpStatus.OK);
-        } catch(Exception e) {
-            return new ResponseEntity<>("Could not delete post with id " + id + " error: " + e.getMessage(), HttpStatus.BAD_REQUEST);
-
-        }
+        return userService.deleteBlogPostById(id);
     }
 
     @PostMapping("/api/newpost")
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAnyRole('BLOGGHEAVEN_USER','BLOGGHEAVEN_ADMIN')")
     public ResponseEntity<String> createNewPost(@RequestBody BlogPost blogPost){
         return userService.createBlogPost(blogPost);
     }
 
     @PutMapping("/api/updatepost/{id}")
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAnyRole('BLOGGHEAVEN_USER','BLOGGHEAVEN_ADMIN')")
     public ResponseEntity<String> updatePost(@PathVariable Long id, @RequestBody BlogPost blogPost){
         return userService.updateBlogPost(id, blogPost.getContent());
     }

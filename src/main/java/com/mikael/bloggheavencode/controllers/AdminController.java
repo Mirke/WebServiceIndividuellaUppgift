@@ -2,7 +2,6 @@ package com.mikael.bloggheavencode.controllers;
 import com.mikael.bloggheavencode.entities.BlogUser;
 import com.mikael.bloggheavencode.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -32,25 +31,20 @@ public class AdminController {
     // -----------------------------------------------------------------------------------------------------------------
 
     @GetMapping("/users")
-    @PreAuthorize("hasRole('ADMIN')")
-    public List<BlogUser> getAllUsers(){
+    @PreAuthorize("hasRole('BLOGGHEAVEN_ADMIN')")
+    public List<BlogUser> getAllUsers() {
         return adminService.getAllUsers();
     }
 
     @GetMapping("/users/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public Optional<BlogUser> getUserByID(@PathVariable Long id){
+    @PreAuthorize("hasRole('BLOGGHEAVEN_ADMIN')")
+    public Optional<BlogUser> getUserByID(@PathVariable Long id) {
         return adminService.findBlogUserById(id);
     }
 
     @PostMapping("/newuser")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> newUser(@RequestBody BlogUser blogUser){
-        try {
-            adminService.createBlogUser(blogUser);
-            return new ResponseEntity<>("Creating user " + blogUser, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Failed to add user ", HttpStatus.BAD_REQUEST);
-        }
+    @PreAuthorize("hasRole('BLOGGHEAVEN_ADMIN')")
+    public ResponseEntity<String> newUser(@RequestBody BlogUser blogUser) {
+        return adminService.createNewUser(blogUser);
     }
 }

@@ -1,5 +1,8 @@
 package com.mikael.bloggheavencode.services;
+import com.mikael.bloggheavencode.entities.BlogPost;
 import com.mikael.bloggheavencode.entities.BlogUser;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -13,5 +16,5 @@ import java.util.Optional;
 public interface IAdminService {
     List<BlogUser> getAllUsers();
     Optional<BlogUser> findBlogUserById(Long id);
-    void createBlogUser(BlogUser blogUser);
+    ResponseEntity<String> createNewUser(BlogUser blogUser);
 }

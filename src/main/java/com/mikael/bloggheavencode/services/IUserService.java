@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface IUserService {
     List<BlogPost> getAllBlogPosts();
     Optional<BlogPost> findBlogPostById(Long id);
-    Optional<BlogPost> deleteBlogPostById(Long id);
+    ResponseEntity<String> deleteBlogPostById(Long id);
     ResponseEntity<String> createBlogPost(BlogPost blogPost);
     ResponseEntity<String> updateBlogPost(Long id, String content);
 }
